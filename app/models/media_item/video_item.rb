@@ -1,0 +1,3 @@
+class VideoItem < MediaItem
+
+end
