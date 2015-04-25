@@ -10,7 +10,7 @@ class MediaItem < ActiveRecord::Base
   private
 
   def type_correctness
-    errors.add(:type, "Type is not acceptable") unless types.include? type
+    errors.add(:type, "is not acceptable") unless types.include? type
   end
 
 end
