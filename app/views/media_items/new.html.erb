@@ -1,0 +1,16 @@
+<h1>Create New Media Item</h1>
+
+<%= simple_form_for(@item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :type, collection: MediaItem.type_descriptions,
+                       include_blank: 'Please select' %>
+    <%= f.input :title %>
+    <%= f.input :description, as: :text %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

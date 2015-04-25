@@ -1,3 +1,5 @@
-class WebLink < ActiveRecord::Base
+class WebLink < Link
+  
+  belongs_to :link_item
 
 end
