@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :media_item do
     title { Faker::Lorem.word }
     description { Faker::Lorem.paragraph }
+    user_id { FactoryGirl.create(:user).id }
 
     factory :video_item do
       type "VideoItem"

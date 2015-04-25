@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   validates :email, :name, presence: true
 
+  has_many :media_items
+
   after_initialize :set_default_role, :if => :new_record?
 
   private

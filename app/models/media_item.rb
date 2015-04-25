@@ -1,7 +1,9 @@
 class MediaItem < ActiveRecord::Base
 
-  validates :title, :description, presence: true
+  validates :title, :description, :user_id, presence: true
   validate :type_correctness
+
+  belongs_to :user
 
   def types
     %W(VideoItem LinkItem ImageItem)

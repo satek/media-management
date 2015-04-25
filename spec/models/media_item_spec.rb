@@ -10,4 +10,10 @@ RSpec.describe MediaItem, type: :model do
     expect(@media_item).not_to be_valid
   end
 
+  it "belongs to a user" do
+    @media_item.user_id = nil
+    @media_item.valid?
+    expect(@media_item.errors.messages[:user_id]).not_to be_nil
+  end
+
 end
