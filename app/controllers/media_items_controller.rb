@@ -23,6 +23,17 @@ class MediaItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @media_item = MediaItem.find params['id']
+    @media_item.destroy
+
+    respond_to do |format|
+      format.html {
+        redirect_to media_items_path, notice: 'Item was successfully destroyed.'
+      }
+    end
+  end
+
   private
 
   def media_item_params
