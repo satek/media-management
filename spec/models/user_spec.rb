@@ -17,11 +17,6 @@ describe User do
     expect(subject.valid?).to be false
   end
 
-  it "is invalid without name" do
-    subject.name = ''
-    expect(subject.valid?).to be false
-  end
-
   it "it accepts only valid roles" do
     expect {
       subject.role = :nonexistent
