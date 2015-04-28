@@ -6,10 +6,6 @@ RSpec.describe Link, type: :model do
     @link = FactoryGirl.build :link
   }
 
-  it "is invalid without a type" do
-    expect(@link).not_to be_valid
-  end
-
   it "belongs to a media item" do
     @link.media_item_id = nil
     @link.valid?

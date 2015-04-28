@@ -1,0 +1,13 @@
+<h1>Add New Link</h1>
+
+<%= simple_form_for(@link, url: media_item_links_path) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :url %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
