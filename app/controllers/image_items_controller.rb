@@ -1,22 +1,25 @@
 class ImageItemsController < ApplicationController
   before_action :set_image_item, only: [:show, :edit, :update]
 
+  def new
+    authorize @image_item
+  end
 
   def show
     @image = Image.new
-  end
-
-  def new
+    authorize @image_item
   end
 
   def edit
+    authorize @image_item
   end
 
   def update
+    authorize @image_item
     respond_to do |format|
       if @image_item.update(image_item_params)
         format.html {
-          redirect_to @item, notice: "Item was successfully updated"
+          redirect_to @image_item, notice: "Item was successfully updated"
         }
       else
         format.html

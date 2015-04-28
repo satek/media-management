@@ -3,11 +3,13 @@ class ImagesController < ApplicationController
 
   def new
     @image = Image.new
+    authorize @image
   end
 
   def create
     @image = Image.new image_params
     @image.image_item_id = @image_item.id
+    authorize @image
 
     respond_to do |format|
       if @image.save
@@ -25,7 +27,7 @@ class ImagesController < ApplicationController
   private
 
   def image_params
-    params['image'].permit(:image_name, :image)
+    params.require('image').permit(:image_name, :image)
   end
 
   def set_image_item

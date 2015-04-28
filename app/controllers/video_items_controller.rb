@@ -9,9 +9,9 @@ class VideoItemsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @item.update(video_item_params)
+      if @video_item.update(video_item_params)
         format.html {
-          redirect_to @item, notice: "Item was successfully updated"
+          redirect_to @video_item, notice: "Item was successfully updated"
         }
       else
         format.html
@@ -22,7 +22,8 @@ class VideoItemsController < ApplicationController
   private
 
   def set_video_item
-    @item = VideoItem.find params['id']
+    @video_item = VideoItem.find params['id']
+    authorize @video_item
   end
 
   def video_item_params

@@ -5,17 +5,14 @@ class LinkItemsController < ApplicationController
   def show
   end
 
-  def new
-  end
-
   def edit
   end
 
   def update
     respond_to do |format|
-      if @item.update(link_item_params)
+      if @link_item.update(link_item_params)
         format.html {
-          redirect_to @item, notice: "Item was successfully updated"
+          redirect_to @link_item, notice: "Item was successfully updated"
         }
       else
         format.html
@@ -26,7 +23,8 @@ class LinkItemsController < ApplicationController
   private
 
   def set_link_item
-    @item = LinkItem.find params['id']
+    @link_item = LinkItem.find params['id']
+    authorize @link_item
   end
 
   def link_item_params

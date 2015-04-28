@@ -1,26 +1,26 @@
 <h1>Video Media Item</h1>
 
-<% if @item.has_link? %>
-  <%= link_to 'Edit link', edit_media_item_link_path(@item.id, @item.link),
+<% if @video_item.has_link? %>
+  <%= link_to 'Edit link', edit_media_item_link_path(@video_item.id, @video_item.link),
                            class: 'btn btn-default btn-sm' %> |
 <% else %>
-  <%= link_to 'Add new link', new_media_item_link_path(@item),
+  <%= link_to 'Add new link', new_media_item_link_path(@video_item),
                               class: 'btn btn-default btn-sm' %> |
 <% end %>
-<%= link_to 'Edit item', edit_video_item_path(@item),
+<%= link_to 'Edit item', edit_video_item_path(@video_item),
                          class: 'btn btn-default btn-sm' %> |
 <%= link_to 'Back', media_items_path,
                     class: 'btn btn-default btn-sm' %>
 
 <ul>
-  <li><strong>Owner:</strong><%= @item.user.name %></li>
-  <li><strong>Title:</strong><%= @item.title %></li>
-  <li><strong>Description:</strong><%= @item.description %></li>
-  <li><strong>Created at:</strong><%= @item.created_at %></li>
-  <li><strong>Updated at:</strong><%= @item.updated_at %></li>
+  <li><strong>Owner:</strong><%= @video_item.user.name %></li>
+  <li><strong>Title:</strong><%= @video_item.title %></li>
+  <li><strong>Description:</strong><%= @video_item.description %></li>
+  <li><strong>Created at:</strong><%= @video_item.created_at %></li>
+  <li><strong>Updated at:</strong><%= @video_item.updated_at %></li>
 </ul>
 
-<% if @item.link %>
-  <h3><%= link_to "View video", @item.link.url, target: "_blank" %></h3>
-  <embed width="420" height="315" src="<%= @item.link.url %>">
+<% if @video_item.link %>
+  <h3><%= link_to "View video", @video_item.link.url, target: "_blank" %></h3>
+  <embed width="420" height="315" src="<%= @video_item.link.url %>">
 <% end %>

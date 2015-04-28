@@ -1,0 +1,2 @@
+class VideoItemPolicy < MediaItemPolicy
+end

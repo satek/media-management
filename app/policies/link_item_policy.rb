@@ -1,0 +1,2 @@
+class LinkItemPolicy < MediaItemPolicy
+end

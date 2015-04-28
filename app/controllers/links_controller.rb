@@ -6,11 +6,13 @@ class LinksController < ApplicationController
 
   def new
     @link = Link.new
+    authorize @link
   end
 
   def create
     @link = Link.new link_params
     @link.media_item = @media_item
+    authorize @link
 
     respond_to do |format|
       if @link.save
@@ -46,6 +48,7 @@ class LinksController < ApplicationController
 
   def set_link
     @link = Link.find params['id']
+    authorize @link
   end
 
   def set_media_item

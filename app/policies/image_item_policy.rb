@@ -1,0 +1,2 @@
+class ImageItemPolicy < MediaItemPolicy
+end

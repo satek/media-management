@@ -1,3 +1,5 @@
 <h1>Edit Image Item</h1>
 
-<%= render "media_items/edit_form" %>
+<%= simple_form_for(@image_item) do |f| %>
+  <%= render partial: "media_items/edit_form", locals: { form: f } %>
+<% end %>

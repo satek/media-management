@@ -1,16 +1,18 @@
 class MediaItemsController < ApplicationController
 
   def index
-    @media_items = MediaItem.all
+    @media_items =policy_scope(MediaItem).all
   end
 
   def new
     @item = MediaItem.new
+    authorize @item
   end
 
   def create
     @item = MediaItem.new(media_item_params)
     @item.user = current_user
+    authorize @item
 
     respond_to do |format|
       if @item.save
@@ -25,6 +27,7 @@ class MediaItemsController < ApplicationController
 
   def destroy
     @media_item = MediaItem.find params['id']
+    authorize @media_item
     @media_item.destroy
 
     respond_to do |format|
