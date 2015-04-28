@@ -1,0 +1,35 @@
+<h1>Images</h1>
+
+<%= link_to 'Edit item', edit_image_item_path(@image_item), 
+                         class: 'btn btn-default btn-sm' %> |
+<%= link_to 'Back', media_items_path,
+                    class: 'btn btn-default btn-sm' %>
+
+<ul>
+  <li><strong>Owner:</strong><%= @image_item.user.name %></li>
+  <li><strong>Title:</strong><%= @image_item.title %></li>
+  <li><strong>Description:</strong><%= @image_item.description %></li>
+  <li><strong>Created at:</strong><%= @image_item.created_at %></li>
+  <li><strong>Updated at:</strong><%= @image_item.updated_at %></li>
+</ul>
+
+<div>
+  <h3>Upload New Image</h3>
+  <%= render "images/form" %>
+</div>
+
+<% if @image_item.has_images? %>
+  <h3>Images:</h3>
+  <ul class="list-group">
+    <% @image_item.images.each do |image| %>
+      <li class="list-group-item">
+        <strong><%= image.image_name %></strong>
+        <%= image_tag image.image.thumb('400x200#').url if image.image_stored? %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="alert-info">
+    No images are stored yet
+  </div>
+<% end %>

@@ -1,0 +1,5 @@
+<%= simple_form_for @image,
+      url: image_item_images_path(@image_item) do |f| %>
+  <%= f.file_field :image %>
+  <%= f.button :submit, "Upload Image" %>
+<% end %>

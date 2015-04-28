@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :link_items, only: [:show, :edit, :update]
 
-  resources :image_items, only: [:show, :edit, :update]
+  resources :image_items, only: [:show, :edit, :update] do
+    resources :images
+  end
 
 end

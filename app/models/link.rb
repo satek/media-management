@@ -2,7 +2,7 @@ class Link < ActiveRecord::Base
   
   validates :media_item_id, :url, presence: true
   validate :url_protocol_present
-  validate :video_item_has_only_one_link
+  validate :video_item_has_only_one_link, on: :create
 
   belongs_to :media_item
 
@@ -13,7 +13,7 @@ class Link < ActiveRecord::Base
   end
 
   def video_item_has_only_one_link
-    return if !media_item
+    return unless media_item
     return if media_item.type != 'VideoItem' or !media_item.link
     errors.add(:base, "Video media can only have one link")
   end

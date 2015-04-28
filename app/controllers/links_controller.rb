@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
 
-  before_action :set_link, only: [:show, :edit]
-  before_action :set_media_item, only: [:new, :edit, :create]
+  before_action :set_link, only: [:show, :edit, :update]
+  before_action :set_media_item, only: [:new, :edit, :create, :update]
   before_action :check_video_item_double_links, only: [:new, :create]
 
   def new
@@ -20,6 +20,23 @@ class LinksController < ApplicationController
       else
         format.html { 
           render :new
+        }
+      end
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @link.update(link_params)
+        format.html {
+          redirect_to @media_item, notice: "Link was successfully updated"
+        }
+      else
+        format.html {
+          render "edit"
         }
       end
     end

@@ -1,7 +1,8 @@
 <h1>Web Site Links</h1>
 
 <%= link_to 'Add new link', new_media_item_link_path(@item) %> |
-<%= link_to 'Edit item', edit_link_item_path(@item) %>
+<%= link_to 'Edit item', edit_link_item_path(@item) %> |
+<%= link_to 'Back', media_items_path %>
 
 <ul>
   <li><strong>Owner:</strong><%= @item.user.name %></li>
