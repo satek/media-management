@@ -7,11 +7,11 @@ class LinkPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    @user.id == @link.media_item.user.id
   end
 
   def create?
-    true
+    @user.id == @link.media_item.user.id
   end
 
   def show?

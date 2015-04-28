@@ -7,11 +7,11 @@ class ImagePolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    @user.id == @image.image_item.user.id
   end
 
   def create?
-    true
+    @user.id == @image.image_item.user.id
   end
 
   def show?
