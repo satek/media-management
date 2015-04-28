@@ -4,12 +4,13 @@ RSpec.describe VideoItemsController, type: :controller do
 
   before(:each) do
     @video_item = FactoryGirl.create :video_item
+    sign_in @video_item.user
   end
   
   describe "GET show" do
     it "assigns @item" do
       get :show, id: @video_item.id
-      assigned = assigns(:item)
+      assigned = assigns(:video_item)
       expect(assigned.title).to eq(@video_item.title)
       expect(assigned.description).to eq(@video_item.description)
     end
@@ -18,7 +19,7 @@ RSpec.describe VideoItemsController, type: :controller do
   describe "GET edit" do
     it "assigns @item" do
       get :edit, id: @video_item.id
-      assigned = assigns(:item)
+      assigned = assigns(:video_item)
       expect(assigned.title).to eq(@video_item.title)
       expect(assigned.description).to eq(@video_item.description)
     end
