@@ -36,5 +36,12 @@ RSpec.describe MediaItemsController, type: :controller do
       media_items = assigns(:media_items)
       expect(media_items.count).to be(1)
     end
+
+    it "allows searching" do
+      sign_in @user
+      get :index, q: { title_cont: @video_item.title }
+      media_items = assigns(:media_items)
+      expect(media_items.count).to be(1)
+    end
   end
 end

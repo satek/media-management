@@ -1,7 +1,8 @@
 class MediaItemsController < ApplicationController
 
   def index
-    @media_items =policy_scope(MediaItem).all
+    @q = policy_scope(MediaItem).ransack(params[:q])
+    @media_items = @q.result(distinct: true).includes(:user)
   end
 
   def new

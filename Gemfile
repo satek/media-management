@@ -16,6 +16,7 @@ gem 'devise'
 gem 'pundit'
 gem 'simple_form'
 gem 'dragonfly', '~> 1.0.8'
+gem 'ransack'
 
 group :development do
   gem 'better_errors'
