@@ -17,6 +17,22 @@ class MediaItem < ActiveRecord::Base
     %W(VideoItem LinkItem ImageItem)
   end
 
+  def is_video?
+    type == 'VideoItem'
+  end
+
+  def is_link?
+    type == 'LinkItem'
+  end
+
+  def is_image?
+    type == 'ImageItem'
+  end
+
+  def has_link?
+    links.any? 
+  end
+
   private
 
   def type_correctness
