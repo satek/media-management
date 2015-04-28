@@ -4,7 +4,7 @@ FactoryGirl.define do
     description { Faker::Lorem.paragraph }
     user_id { FactoryGirl.create(:user).id }
 
-    factory :video_item do
+    factory :video_item, class: VideoItem do
       type "VideoItem"
     end
 

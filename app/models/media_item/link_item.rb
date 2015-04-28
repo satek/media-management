@@ -1,5 +1,9 @@
 class LinkItem < MediaItem
 
-  has_one :link, foreign_key: :media_item_id
+  has_many :links, foreign_key: :media_item_id
+
+  def has_links?
+    links.any?
+  end
 
 end
