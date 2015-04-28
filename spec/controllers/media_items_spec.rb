@@ -28,5 +28,13 @@ RSpec.describe MediaItemsController, type: :controller do
       media_items = assigns(:media_items)
       expect(media_items.count).to be(0)
     end
+
+    it "shows published items to non-owners" do
+      @video_item.update(published: true)
+      sign_in FactoryGirl.create :user
+      get :index
+      media_items = assigns(:media_items)
+      expect(media_items.count).to be(1)
+    end
   end
 end

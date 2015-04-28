@@ -7,7 +7,7 @@ RSpec.describe VideoItemsController, type: :controller do
   end
   
   describe "GET show" do
-    it "assigns @item" do
+    it "assigns @video_item" do
       sign_in @video_item.user
       get :show, id: @video_item.id
       assigned = assigns(:video_item)
@@ -26,6 +26,16 @@ RSpec.describe VideoItemsController, type: :controller do
       sign_in non_owner
       get :show, id: @video_item.id
       expect(response).to redirect_to(root_path)
+    end
+
+    it "allows non-owner to see published item" do
+      @video_item.update(published: true)
+      non_owner = FactoryGirl.create :user
+      sign_in non_owner
+      get :show, id: @video_item.id
+      assigned = assigns(:video_item)
+      expect(assigned.title).to eq(@video_item.title)
+      expect(assigned.description).to eq(@video_item.description)
     end
   end
 

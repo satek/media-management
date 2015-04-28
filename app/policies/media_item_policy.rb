@@ -15,6 +15,7 @@ class MediaItemPolicy < ApplicationPolicy
   end
 
   def show?
+    @media_item.published or
     @user.id == @media_item.user.id
   end
 
@@ -35,7 +36,7 @@ class MediaItemPolicy < ApplicationPolicy
     end
 
     def resolve
-      scope.where(user_id: user.id)
+      scope.where("user_id = ? or published= ?", user.id, true)
     end
   end
 end

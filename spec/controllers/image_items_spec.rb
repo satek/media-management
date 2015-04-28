@@ -27,6 +27,16 @@ RSpec.describe ImageItemsController, type: :controller do
       get :show, id: @image_item.id
       expect(response).to redirect_to(root_path)
     end
+
+    it "allows non-owner to see published item" do
+      @image_item.update(published: true)
+      non_owner = FactoryGirl.create :user
+      sign_in non_owner
+      get :show, id: @image_item.id
+      assigned = assigns(:image_item)
+      expect(assigned.title).to eq(@image_item.title)
+      expect(assigned.description).to eq(@image_item.description)
+    end
   end
 
   describe "GET edit" do
