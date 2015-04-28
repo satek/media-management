@@ -1,3 +1,6 @@
 <h1>Add New Link</h1>
 
-<%= render "form" %>
+<%= simple_form_for(@link, 
+      url: media_item_links_path(@media_item.id)) do |f| %>
+  <%= render partial: "form", locals: { form: f } %>
+<% end %>

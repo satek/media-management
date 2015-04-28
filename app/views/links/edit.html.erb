@@ -1,3 +1,6 @@
 <h1>Edit Link</h1>
-
-<%= render "form" %>
+ 
+<%= simple_form_for(@link, 
+      url: media_item_link_path(@media_item.id, @link.id)) do |f| %>
+  <%= render partial: "form", locals: { form: f } %>
+<% end %>
