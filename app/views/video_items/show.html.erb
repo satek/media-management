@@ -1,14 +1,16 @@
 <h1>Video Media Item</h1>
 
-<% if @video_item.has_link? %>
-  <%= link_to 'Edit link', edit_media_item_link_path(@video_item.id, @video_item.link),
+<% if current_user == @video_item.user %>
+  <% if @video_item.has_link? %>
+    <%= link_to 'Edit link', edit_media_item_link_path(@video_item.id, @video_item.link),
+                             class: 'btn btn-default btn-sm' %> |
+  <% else %>
+    <%= link_to 'Add new link', new_media_item_link_path(@video_item),
+                                class: 'btn btn-default btn-sm' %> |
+  <% end %>
+  <%= link_to 'Edit item', edit_video_item_path(@video_item),
                            class: 'btn btn-default btn-sm' %> |
-<% else %>
-  <%= link_to 'Add new link', new_media_item_link_path(@video_item),
-                              class: 'btn btn-default btn-sm' %> |
 <% end %>
-<%= link_to 'Edit item', edit_video_item_path(@video_item),
-                         class: 'btn btn-default btn-sm' %> |
 <%= link_to 'Back', media_items_path,
                     class: 'btn btn-default btn-sm' %>
 

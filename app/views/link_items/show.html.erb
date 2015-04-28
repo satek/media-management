@@ -1,9 +1,11 @@
 <h1>Web Site Links</h1>
 
-<%= link_to 'Add new link', new_media_item_link_path(@link_item),
-                            class: 'btn btn-default btn-sm' %> |
-<%= link_to 'Edit item', edit_link_item_path(@link_item),
-                         class: 'btn btn-default btn-sm' %> |
+<% if current_user = @link_item.user %>
+  <%= link_to 'Add new link', new_media_item_link_path(@link_item),
+                              class: 'btn btn-default btn-sm' %> |
+  <%= link_to 'Edit item', edit_link_item_path(@link_item),
+                           class: 'btn btn-default btn-sm' %> |
+<% end %>
 <%= link_to 'Back', media_items_path,
                     class: 'btn btn-default btn-sm' %>
 

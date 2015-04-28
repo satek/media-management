@@ -1,7 +1,9 @@
 <h1>Images</h1>
 
-<%= link_to 'Edit item', edit_image_item_path(@image_item), 
-                         class: 'btn btn-default btn-sm' %> |
+<% if current_user = @image_item.user %>
+  <%= link_to 'Edit item', edit_image_item_path(@image_item), 
+                           class: 'btn btn-default btn-sm' %> |
+<% end %>
 <%= link_to 'Back', media_items_path,
                     class: 'btn btn-default btn-sm' %>
 
