@@ -1,5 +1,8 @@
 <h1>Video Media Item</h1>
 
+<%= link_to 'Add new link', new_media_item_link_path(@item) %> |
+<%= link_to 'Edit item', edit_video_item_path(@item) %>
+
 <ul>
   <li><strong>Owner:</strong><%= @item.user.name %></li>
   <li><strong>Title:</strong><%= @item.title %></li>
@@ -9,7 +12,6 @@
 </ul>
 
 <% if @item.link %>
-  <h3>View video <%= @item.link.url %></h3>
-
+  <h3><%= link_to "View video", @item.link.url, target: "_blank" %></h3>
   <embed width="420" height="315" src="<%= @item.link.url %>">
 <% end %>
