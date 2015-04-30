@@ -2,22 +2,26 @@ require 'rails_helper'
 
 RSpec.describe ImageItem, type: :model do
 
-  before(:each) { 
-    @image_item = FactoryGirl.build :image_item
-  }
-
-  it "has a valid factory" do
-    expect(@image_item).to be_valid
+  context "when built from factory" do
+    subject { FactoryGirl.build :image_item }
+    it { is_expected.to be_valid }
   end
 
-  it "is invalid without title" do
-    @image_item.title = ''
-    expect(@image_item).not_to be_valid
-  end
-
-  it "is invalid without description" do
-    @image_item.description = ''
-    expect(@image_item).not_to be_valid
+  describe "#has_images?" do
+    let(:image_item) { FactoryGirl.create :image_item }
+    subject { image_item }
+    context "when image belongs to it" do
+      let(:image) { FactoryGirl.create :image, image_item_id: subject.id }
+      it "returns true" do
+        image.reload
+        expect(subject.has_images?).to be true
+      end
+    end
+    context "when no image belongs to it" do
+      it "returns false" do
+        expect(subject.has_images?).to be false
+      end
+    end
   end
 
 end
