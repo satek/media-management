@@ -2,22 +2,25 @@ require 'rails_helper'
 
 RSpec.describe LinkItem, type: :model do
 
-  before(:each) { 
-    @link_item = FactoryGirl.build :link_item
-  }
-
-  it "has a valid factory" do
-    expect(@link_item).to be_valid
+  context "when built from factory" do
+    subject { FactoryGirl.build :link_item }
+    it { is_expected.to be_valid }
   end
 
-  it "is invalid without title" do
-    @link_item.title = ''
-    expect(@link_item).not_to be_valid
+  describe "#has_links?" do
+    let(:link_item) { FactoryGirl.create :link_item }
+    subject { link_item }
+    context "when link belongs to it" do
+      let(:link) { FactoryGirl.create :link, media_item_id: link_item.id }
+      it "returns true" do
+        link.reload
+        expect(subject.has_links?).to be true
+      end
+    end
+    context "when no link belongs to it" do
+      it "returns false" do
+        expect(subject.has_links?).to be false
+      end
+    end
   end
-
-  it "is invalid without description" do
-    @link_item.description = ''
-    expect(@link_item).not_to be_valid
-  end
-
 end
