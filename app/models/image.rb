@@ -3,7 +3,6 @@ class Image < ActiveRecord::Base
 
   belongs_to :image_item
 
-  validates :image, presence: true
-
+  validates :image, :image_item_id, presence: true
 
 end
