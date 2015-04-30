@@ -9,6 +9,7 @@ class Link < ActiveRecord::Base
   private
 
   def url_protocol_present
+    return unless url
     errors.add(:url, "Protocol must be present") unless url.start_with? "http"
   end
 
