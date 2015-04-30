@@ -29,13 +29,10 @@ class MediaItem < ActiveRecord::Base
     type == 'ImageItem'
   end
 
-  def has_link?
-    links.any? 
-  end
-
   private
 
   def type_correctness
+    return unless type
     errors.add(:type, "is not acceptable") unless types.include? type
   end
 
