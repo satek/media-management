@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   enum role: [:user, :admin]
 
-  validates :email, presence: true
+  validates :role, presence: true
 
   has_many :media_items
 
