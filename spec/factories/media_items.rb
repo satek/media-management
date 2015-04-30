@@ -8,11 +8,11 @@ FactoryGirl.define do
       type "VideoItem"
     end
 
-    factory :link_item do
+    factory :link_item, class: LinkItem do
       type "LinkItem"
     end
 
-    factory :image_item do
+    factory :image_item, class: ImageItem do
       type "ImageItem"
     end
   end
