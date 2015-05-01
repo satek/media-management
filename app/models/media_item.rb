@@ -5,6 +5,8 @@ class MediaItem < ActiveRecord::Base
 
   belongs_to :user
 
+  delegate :name, to: :user, prefix: true
+
   def self.type_descriptions
     {
       "Video" => "VideoItem",

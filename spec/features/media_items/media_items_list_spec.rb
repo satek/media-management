@@ -44,6 +44,25 @@ feature "Media items list" do
         end
       end
       
+      scenario "media item search" do
+        media_items
+        second_user_items
+        signin user.email
+        visit media_items_path
+        search_item = media_items.first
+        [:title, :description, :user_name].each do |by|
+          search_result_count = media_items.inject(0) do |sum, item|
+            sum += 1 if item.send(by).include? search_item.send(by)
+            sum
+          end
+          fill_in "q_#{by.to_s}_cont", with: search_item.send(by)
+          click_button "Search"
+          expect(page).to have_css("#media-item-#{search_item.id}")
+          expect(page).to have_selector("tbody > tr", count: search_result_count)
+          visit media_items_path
+        end
+      end
+      
     end
   end
 
