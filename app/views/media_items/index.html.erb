@@ -21,7 +21,7 @@
 
   <tbody>
   <% @media_items.each do |item| %>
-    <tr>
+    <tr id="media-item-<%= item.id %>">
       <td><%= item.title %></td>
       <td><%= item.user.name %></td>
       <td><%= link_to 'Show', item %></td>

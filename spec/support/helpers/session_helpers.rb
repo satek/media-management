@@ -1,6 +1,9 @@
 module Features
   module SessionHelpers
-    def sign_up_with(name, email, password, confirmation)
+    def sign_up_with(name, 
+                     email, 
+                     password = USER_TEST_PASSWORD,
+                     confirmation = USER_TEST_PASSWORD)
       visit new_user_registration_path
       fill_in 'Email', with: email
       fill_in 'Name', with: name
@@ -9,7 +12,7 @@ module Features
       click_button 'Sign up'
     end
 
-    def signin(email, password)
+    def signin(email, password = USER_TEST_PASSWORD)
       visit new_user_session_path
       fill_in 'Email', with: email
       fill_in 'Password', with: password
