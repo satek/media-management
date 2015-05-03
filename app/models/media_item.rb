@@ -31,6 +31,10 @@ class MediaItem < ActiveRecord::Base
     type == 'ImageItem'
   end
 
+  def is_owner? user
+    self.user == user
+  end
+
   private
 
   def type_correctness

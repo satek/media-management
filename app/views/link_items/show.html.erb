@@ -1,6 +1,6 @@
 <h1>Web Site Links</h1>
 
-<% if current_user = @link_item.user %>
+<% if current_user == @link_item.user %>
   <%= link_to 'Add new link', new_media_item_link_path(@link_item),
                               class: 'btn btn-default btn-sm' %> |
   <%= link_to 'Edit item', edit_link_item_path(@link_item),
@@ -19,11 +19,11 @@
 
 <% if @link_item.has_links? %>
   <h3>Web Sites:</h3>
-  <ul>
-    <% @link_item.links.each do |link| %>
-      <li><%= link_to link.url, link.url, target: "_blank" %></li>
-    <% end %>
-  </ul>
+  <% if @link_item.is_owner? current_user %>
+    <%= render 'list_links_owner' %>
+  <% else %>
+    <%= render 'list_links_non_owner' %>
+  <% end %>
 <% else %>
   <div class="alert-info">
     No links are stored yet

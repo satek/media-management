@@ -1,0 +1,11 @@
+<ul>
+  <% @link_item.links.each do |link| %>
+    <li>
+      <%= link_to link.url, link.url, target: "_blank" %> |
+      <strong>
+        <%= link_to 'Edit link',
+                    edit_media_item_link_path(link.media_item.id, link.id) %>
+      </strong>
+    </li>
+  <% end %>
+</ul>
