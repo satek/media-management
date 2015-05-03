@@ -7,5 +7,13 @@ module Features
         }
       }.flatten
     end
+
+    def expect_item_details page
+      expect(page).to have_content(item.user.name)
+      expect(page).to have_content(item.title)
+      expect(page).to have_content(item.description)
+      expect(page).to have_content(item.created_at)
+      expect(page).to have_content(item.updated_at)    
+    end
   end
 end
