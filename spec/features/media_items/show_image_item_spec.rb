@@ -60,6 +60,7 @@ feature "show image item" do
         @images.each { |image|
           expect(page).to have_content("#{image.image_name}")
           expect(page).to have_css("[@src='#{image.image.thumb('400x200#').url}']")
+          expect(page).to have_content("Delete")
         }
         expect(page).to have_content("Upload New Image")
         expect(page).to have_css("[@href='#{edit_image_item_path(item.id)}']")
@@ -76,6 +77,7 @@ feature "show image item" do
         @images.each { |image|
           expect(page).to have_content("#{image.image_name}")
           expect(page).to have_css("[@src='#{image.image.thumb('400x200#').url}']")
+          expect(page).not_to have_content("Delete")
         }
         expect(page).not_to have_css("[@href='#{edit_image_item_path(item.id)}']")
       end

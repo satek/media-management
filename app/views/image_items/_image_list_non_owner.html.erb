@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <% @image_item.images.each do |image| %>
+    <li class="list-group-item">
+      <strong><%= image.image_name %></strong>
+      <%= image_tag image.image.thumb('400x200#').url if image.image_stored? %>
+    </li>
+  <% end %>
+</ul>
