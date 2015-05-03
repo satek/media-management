@@ -1,6 +1,6 @@
-<h1>Images</h1>
+<h1>Image Media Item</h1>
 
-<% if current_user = @image_item.user %>
+<% if current_user == @image_item.user %>
   <%= link_to 'Edit item', edit_image_item_path(@image_item), 
                            class: 'btn btn-default btn-sm' %> |
 <% end %>
@@ -15,10 +15,12 @@
   <li><strong>Updated at:</strong><%= @image_item.updated_at %></li>
 </ul>
 
-<div>
-  <h3>Upload New Image</h3>
-  <%= render "images/form" %>
-</div>
+<% if @image_item.is_owner? current_user %>
+  <div>
+    <h3>Upload New Image</h3>
+    <%= render "images/form" %>
+  </div>
+<% end %>
 
 <% if @image_item.has_images? %>
   <h3>Images:</h3>
