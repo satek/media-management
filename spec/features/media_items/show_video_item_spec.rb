@@ -6,7 +6,7 @@ feature "show video item" do
       item = FactoryGirl.create :video_item
       visit video_item_path(item.id)
       expect(current_path).to eq(new_user_session_path)
-      expect(page).to have_content("You need to sign in or sign up before continuing")
+      expect_not_signed_in page
     end
   end
 
@@ -18,7 +18,7 @@ feature "show video item" do
       signin user.email
       visit video_item_path(item.id)
       expect(current_path).to eq(root_path)
-      expect(page).to have_content("Not authorized")
+      expect_not_authorized page
     end
 
     context "when item doesn't have a link" do

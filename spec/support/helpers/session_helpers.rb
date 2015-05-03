@@ -18,5 +18,13 @@ module Features
       fill_in 'Password', with: password
       click_button 'Sign in'
     end
+
+    def expect_not_signed_in page
+      expect(page).to have_content("You need to sign in or sign up before continuing")
+    end
+
+    def expect_not_authorized page
+      expect(page).to have_content("Not authorized")
+    end
   end
 end
