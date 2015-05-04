@@ -22,4 +22,8 @@ class ImagePolicy < ApplicationPolicy
     @user.id == @image.image_item.user.id
   end
 
+  def destroy?
+    @user.id == @image.image_item.user.id
+  end
+
 end

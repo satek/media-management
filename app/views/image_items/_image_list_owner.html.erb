@@ -3,7 +3,7 @@
     <li class="list-group-item">
       <strong><%= image.image_name %></strong>
       <%= image_tag image.image.thumb('400x200#').url if image.image_stored? %> |
-      <%= link_to "Delete", image_path(image.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to "Delete", image_item_image_path(image.image_item.id, image.id), method: :delete, data: { confirm: 'Are you sure?' } %>
     </li>
   <% end %>
 </ul>

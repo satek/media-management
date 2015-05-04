@@ -5,4 +5,6 @@ class Image < ActiveRecord::Base
 
   validates :image, :image_item_id, presence: true
 
+  delegate :user, to: :image_item
+
 end

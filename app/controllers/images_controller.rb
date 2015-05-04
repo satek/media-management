@@ -24,6 +24,13 @@ class ImagesController < ApplicationController
     end
   end
 
+  def destroy
+    image = Image.find params['id']
+    authorize image
+    image.destroy
+    redirect_to image.image_item, notice: "Image was successfully deleted"
+  end
+
   private
 
   def image_params
