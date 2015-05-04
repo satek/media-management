@@ -15,5 +15,12 @@ module Features
       expect(page).to have_content(item.created_at)
       expect(page).to have_content(item.updated_at)    
     end
+
+    def expect_edit_fields page
+      expect(page).to have_content("Title")
+      expect(page).to have_content("Description")
+      expect(page).to have_css("input#video_item_title")
+      expect(page).to have_css("textarea#video_item_description")
+    end
   end
 end
