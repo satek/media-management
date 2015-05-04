@@ -24,11 +24,13 @@ describe "edit link item" do
       expect(page).to have_css("textarea#link_item_description")
       fill_in "link_item_title", with: new_title
       fill_in "link_item_description", with: new_description
+      check "link_item_published"
       click_button "Update Link item"
       link_item.reload
       expect(page).to have_content("Item was successfully updated")
       expect(link_item.title).to eq new_title
       expect(link_item.description).to eq new_description
+      expect(link_item.published?).to eq true
     end
 
     scenario "editing other user's link item" do

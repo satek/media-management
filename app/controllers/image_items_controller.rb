@@ -34,7 +34,7 @@ class ImageItemsController < ApplicationController
   end
 
   def image_item_params
-    params['image_item'].permit(:title, :description)
+    params['image_item'].permit(:title, :description, :published)
   end
 
 end

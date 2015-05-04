@@ -24,13 +24,14 @@ describe "edit image item" do
       expect(page).to have_css("textarea#image_item_description")
       fill_in "image_item_title", with: new_title
       fill_in "image_item_description", with: new_description
+      check "image_item_published"
       click_button "Update Image item"
       image_item.reload
       expect(page).to have_content("Item was successfully updated")
       expect(image_item.title).to eq new_title
-      expect(image_item.description).to eq new_description
+      expect(image_item.published?).to eq true
     end
-
+    
     scenario "editing other user's image item" do
       user = FactoryGirl.create :user
       signin user.email

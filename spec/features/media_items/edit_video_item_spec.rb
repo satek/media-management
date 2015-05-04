@@ -24,11 +24,13 @@ describe "edit video item" do
       expect(page).to have_css("textarea#video_item_description")
       fill_in "video_item_title", with: new_title
       fill_in "video_item_description", with: new_description
+      check "video_item_published"
       click_button "Update Video item"
       video_item.reload
       expect(page).to have_content("Item was successfully updated")
       expect(video_item.title).to eq new_title
       expect(video_item.description).to eq new_description
+      expect(video_item.published?).to eq true
     end
 
     scenario "editing other user's video item" do

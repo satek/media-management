@@ -28,7 +28,7 @@ class LinkItemsController < ApplicationController
   end
 
   def link_item_params
-    params['link_item'].permit(:title, :description)
+    params['link_item'].permit(:title, :description, :published)
   end
 
 end

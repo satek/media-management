@@ -27,7 +27,7 @@ class VideoItemsController < ApplicationController
   end
 
   def video_item_params
-    params['video_item'].permit(:title, :description)
+    params['video_item'].permit(:title, :description, :published)
   end
 
 end
