@@ -18,7 +18,10 @@ describe "edit video item" do
       signin video_item.user.email
       visit edit_video_item_path(video_item.id)
       expect(page).to have_content("Edit Video Item")
-      expect_edit_fields page
+      expect(page).to have_content("Title")
+      expect(page).to have_content("Description")
+      expect(page).to have_css("input#video_item_title")
+      expect(page).to have_css("textarea#video_item_description")
       fill_in "video_item_title", with: new_title
       fill_in "video_item_description", with: new_description
       click_button "Update Video item"
